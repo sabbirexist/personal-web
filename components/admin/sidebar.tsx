@@ -18,7 +18,7 @@ const items: { href: string; label: string; icon: IconName }[] = [
   { href: "/admin/settings", label: "Settings", icon: "monitor" },
 ];
 
-export function AdminSidebar({ unread }: { unread: number }) {
+export function AdminSidebar({ unread, wordmark = "SABBIR" }: { unread: number; wordmark?: string }) {
   const pathname = usePathname();
   const router = useRouter();
   const [open, setOpen] = useState(false);
@@ -69,9 +69,11 @@ export function AdminSidebar({ unread }: { unread: number }) {
           <span className="text-accent">
             <LogoMark size={22} />
           </span>
-          <span className="flex flex-col leading-none">
-            <span className="text-[0.8rem] font-semibold tracking-tight text-ink">SABBIR</span>
-            <span className="mono mt-0.5 text-[8px] text-faint">Studio admin</span>
+          <span className="flex items-center gap-1.5">
+            <span className="text-[0.8rem] font-semibold tracking-tight text-ink">{wordmark}</span>
+            <span className="mono whitespace-nowrap text-[7px] tracking-[0.16em] text-faint opacity-60">
+              — STUDIO ADMIN
+            </span>
           </span>
         </Link>
         <div className="flex items-center gap-2">
@@ -108,9 +110,11 @@ export function AdminSidebar({ unread }: { unread: number }) {
           <span className="text-accent">
             <LogoMark size={26} />
           </span>
-          <span className="flex flex-col leading-none">
-            <span className="text-[0.9rem] font-semibold tracking-[-0.02em] text-ink">SABBIR</span>
-            <span className="mono mt-1 text-[8px] text-faint">Studio admin</span>
+          <span className="flex items-center gap-1.5">
+            <span className="text-[0.9rem] font-semibold tracking-[-0.02em] text-ink">{wordmark}</span>
+            <span className="mono whitespace-nowrap text-[8px] tracking-[0.16em] text-faint opacity-60">
+              — STUDIO ADMIN
+            </span>
           </span>
         </Link>
 
