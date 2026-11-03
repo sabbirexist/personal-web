@@ -13,3 +13,5 @@ public/uploads/*
 previews/
 .vercel
 logo-test.html
+.vercel
+.env*
