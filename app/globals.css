@@ -996,6 +996,7 @@ html[data-intro="1"] .intro-curtain .intro-bar {
   background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius-md);
+  min-width: 0;
 }
 .admin-row {
   display: flex;

@@ -58,7 +58,7 @@ export default async function AdminOverviewPage() {
               : "Your site is live — availability is currently set to booked."}
           </p>
         </div>
-        <div className="flex flex-wrap gap-2">
+        <div className="grid grid-cols-2 gap-2 sm:flex sm:flex-wrap">
           <Link href="/" target="_blank" className="btn btn-ghost btn-sm">
             <Icon name="external" size={14} />
             View site
@@ -70,12 +70,12 @@ export default async function AdminOverviewPage() {
         </div>
       </header>
 
-      <div className="grid gap-3 sm:grid-cols-2 xl:grid-cols-4">
+      <div className="grid grid-cols-2 gap-2.5 sm:gap-3 xl:grid-cols-4">
         {stats.map((stat) => (
           <Link
             key={stat.label}
             href={stat.href}
-            className="admin-card group p-5 transition-colors duration-300 hover:border-line-strong"
+            className="admin-card group p-4 transition-colors duration-300 hover:border-line-strong sm:p-5"
           >
             <div className="flex items-center justify-between">
               <span className="grid size-9 place-items-center rounded-lg bg-accent-soft text-accent">
@@ -97,8 +97,8 @@ export default async function AdminOverviewPage() {
       </div>
 
       <div className="grid gap-5 lg:grid-cols-5">
-        <section className="admin-card lg:col-span-3">
-          <div className="flex items-center justify-between border-b border-line px-5 py-4">
+        <section className="admin-card min-w-0 lg:col-span-3">
+          <div className="flex items-center justify-between border-b border-line px-4 py-3.5 sm:px-5 sm:py-4">
             <h2 className="text-[0.9rem] font-semibold tracking-[-0.02em]">Recent enquiries</h2>
             <Link href="/admin/messages" className="mono text-[9px] text-accent-text hover:underline">
               View all
@@ -109,7 +109,7 @@ export default async function AdminOverviewPage() {
               <Link
                 key={message.id}
                 href="/admin/messages"
-                className="flex items-start gap-3 px-5 py-4 transition-colors hover:bg-[color-mix(in_oklab,var(--ink)_4%,transparent)]"
+                className="flex min-w-0 items-start gap-3 px-4 py-3.5 transition-colors hover:bg-[color-mix(in_oklab,var(--ink)_4%,transparent)] sm:px-5 sm:py-4"
               >
                 <span
                   className={`mt-1.5 size-1.5 shrink-0 rounded-full ${message.read ? "bg-line-strong" : "bg-accent"}`}
@@ -135,8 +135,8 @@ export default async function AdminOverviewPage() {
           </div>
         </section>
 
-        <section className="admin-card lg:col-span-2">
-          <div className="border-b border-line px-5 py-4">
+        <section className="admin-card min-w-0 lg:col-span-2">
+          <div className="border-b border-line px-4 py-3.5 sm:px-5 sm:py-4">
             <h2 className="text-[0.9rem] font-semibold tracking-[-0.02em]">Publishing</h2>
           </div>
           <dl className="divide-y divide-line text-[0.82rem]">
@@ -146,13 +146,13 @@ export default async function AdminOverviewPage() {
               { label: "Projects live", value: `${projects.length}` },
               { label: "Location", value: content.site.location },
             ].map((row) => (
-              <div key={row.label} className="flex items-center justify-between px-5 py-3">
+              <div key={row.label} className="flex items-center justify-between gap-3 px-4 py-3 sm:px-5">
                 <dt className="text-faint">{row.label}</dt>
                 <dd className="font-medium capitalize text-ink-soft">{row.value}</dd>
               </div>
             ))}
           </dl>
-          <div className="p-5 pt-4">
+          <div className="p-4 pt-3.5 sm:p-5 sm:pt-4">
             <Link href="/admin/settings" className="btn btn-ghost btn-sm w-full">
               <Icon name="pencil" size={13} />
               Edit site settings
@@ -162,7 +162,7 @@ export default async function AdminOverviewPage() {
       </div>
 
       <section className="admin-card">
-        <div className="flex items-center justify-between border-b border-line px-5 py-4">
+        <div className="flex items-center justify-between border-b border-line px-4 py-3.5 sm:px-5 sm:py-4">
           <h2 className="text-[0.9rem] font-semibold tracking-[-0.02em]">Latest work</h2>
           <Link href="/admin/projects" className="mono text-[9px] text-accent-text hover:underline">
             Manage
