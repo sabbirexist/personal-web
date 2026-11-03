@@ -29,24 +29,35 @@ export async function POST(request: Request) {
   if (message.length < 10)
     return NextResponse.json({ error: "Tell me a little more about the project." }, { status: 422 });
 
-  await updateContent((content) => {
-    content.messages.unshift({
-      id: uid("m"),
-      name,
-      email,
-      projectType,
-      message,
-      createdAt: new Date().toISOString(),
-      read: false,
-    });
-  });
-
-  // light abuse guard: keep the inbox from growing unbounded
-  const after = await readContent();
-  if (after.messages.length > 500) {
+  try {
     await updateContent((content) => {
-      content.messages = content.messages.slice(0, 500);
+      content.messages.unshift({
+        id: uid("m"),
+        name,
+        email,
+        projectType,
+        message,
+        createdAt: new Date().toISOString(),
+        read: false,
+      });
     });
+
+    // light abuse guard: keep the inbox from growing unbounded
+    const after = await readContent();
+    if (after.messages.length > 500) {
+      await updateContent((content) => {
+        content.messages = content.messages.slice(0, 500);
+      });
+    }
+  } catch {
+    let mailto = "hello@sabbir.studio";
+    try {
+      mailto = (await readContent()).site.email;
+    } catch {}
+    return NextResponse.json(
+      { error: "The form can't save right now.", mailto },
+      { status: 503 }
+    );
   }
 
   return NextResponse.json({ ok: true });

@@ -10,7 +10,14 @@ export async function readContent(): Promise<Content> {
   return JSON.parse(raw) as Content;
 }
 
+export const isReadOnlyDeployment = () => Boolean(process.env.VERCEL);
+
 export async function writeContent(content: Content): Promise<void> {
+  if (isReadOnlyDeployment()) {
+    throw new Error(
+      "This deployment is read-only. Editing needs a database or blob store — run the site locally to change content."
+    );
+  }
   await fs.mkdir(DATA_DIR, { recursive: true });
   const tmp = `${DATA_FILE}.${Date.now()}.tmp`;
   const body = JSON.stringify(content, null, 2);

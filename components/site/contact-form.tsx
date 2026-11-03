@@ -10,6 +10,7 @@ type Status = "idle" | "sending" | "sent" | "error";
 export function ContactForm({ email }: { email: string }) {
   const [status, setStatus] = useState<Status>("idle");
   const [error, setError] = useState("");
+  const [fallback, setFallback] = useState<{ href: string; address: string } | null>(null);
   const [projectType, setProjectType] = useState(projectTypes[0]);
   const [message, setMessage] = useState("");
   const ids = {
@@ -24,6 +25,7 @@ export function ContactForm({ email }: { email: string }) {
     const data = new FormData(form);
     setStatus("sending");
     setError("");
+    setFallback(null);
 
     try {
       const res = await fetch("/api/contact", {
@@ -38,11 +40,29 @@ export function ContactForm({ email }: { email: string }) {
         }),
       });
       const json = await res.json().catch(() => ({}));
-      if (!res.ok) throw new Error(json.error || "Something went wrong. Try again?");
+      if (!res.ok) {
+        const failure = new Error(json.error || "Something went wrong. Try again?") as Error & {
+          mailto?: string;
+        };
+        failure.mailto = json.mailto;
+        throw failure;
+      }
       setStatus("sent");
       form.reset();
       setMessage("");
     } catch (err) {
+      const mailto = (err as { mailto?: string }).mailto || email;
+      const bodyText = [
+        `Name: ${data.get("name") ?? ""}`,
+        `Email: ${data.get("email") ?? ""}`,
+        `Project: ${projectType}`,
+        "",
+        String(data.get("message") ?? ""),
+      ].join("\n");
+      setFallback({
+        address: mailto,
+        href: `mailto:${mailto}?subject=${encodeURIComponent("Project enquiry — " + projectType)}&body=${encodeURIComponent(bodyText)}`,
+      });
       setStatus("error");
       setError(err instanceof Error ? err.message : "Something went wrong.");
     }
@@ -173,9 +193,18 @@ export function ContactForm({ email }: { email: string }) {
       </div>
 
       {status === "error" && (
-        <p className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2 text-[0.82rem] text-red-400">
-          {error}
-        </p>
+        <div className="rounded-lg border border-red-500/30 bg-red-500/10 px-3 py-2.5 text-[0.82rem] text-red-400">
+          <p>{error}</p>
+          {fallback && (
+            <a
+              href={fallback.href}
+              className="mt-1.5 inline-flex items-center gap-1 font-medium underline decoration-red-400/40 underline-offset-4 hover:text-red-300"
+            >
+              Email {fallback.address} instead
+              <Icon name="arrowUpRight" size={12} />
+            </a>
+          )}
+        </div>
       )}
     </form>
   );
