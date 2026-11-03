@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { get, put } from "@vercel/blob";
+import { head, put } from "@vercel/blob";
 import seed from "@/data/content.json";
 import type { Content, Project, Service, Testimonial, ProcessStep } from "./types";
 
@@ -20,10 +20,13 @@ async function readBundled(): Promise<Content> {
 
 async function readBlob(): Promise<Content | null> {
   try {
-    const result = await get(BLOB_PATH, { access: "public", useCache: false });
-    if (!result || result.statusCode !== 200) return null;
-    const text = await new Response(result.stream).text();
-    return JSON.parse(text) as Content;
+    // Public blobs are CDN-cached for up to 60s; head() gives the canonical URL and
+    // a per-read query string forces a MISS so the admin always sees its own writes.
+    const meta = await head(BLOB_PATH);
+    if (!meta?.url) return null;
+    const res = await fetch(`${meta.url}?v=${Date.now()}`, { cache: "no-store" });
+    if (!res.ok) return null;
+    return (await res.json()) as Content;
   } catch {
     return null;
   }
