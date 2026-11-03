@@ -1,0 +1,578 @@
+{
+  "site": {
+    "name": "Sabbir",
+    "wordmark": "SABBIR",
+    "role": "Video Editor × Motion Designer",
+    "tagline": "Motion that makes brands",
+    "taglineAccent": "unforgettable",
+    "intro": "I'm Sabbir — a video editor and motion designer turning raw footage into films that hold attention. Two years, fifty clients, and a stubborn obsession with the frame a cut lands on.",
+    "bio": [
+      "I started in a small edit suite in Dhaka with a borrowed monitor and a stubborn belief that a cut can carry emotion better than a line of copy. Two years and fifty clients later, I still believe it — I've just gotten faster at proving it.",
+      "Today I work with brands, creators and studios on films, title sequences, product launches and social systems. My sweet spot is the overlap between editorial rhythm and motion design: pacing that makes a film breathe, and graphics that make a message land.",
+      "I care about the details most people never notice — the frame a cut lands on, the curve of an ease, the three frames of silence before the drop. That's where the work starts to feel expensive."
+    ],
+    "email": "hello@sabbir.studio",
+    "phone": "+880 1700 000 000",
+    "location": "Dhaka, Bangladesh",
+    "timezone": "Asia/Dhaka",
+    "availability": "Booking new projects for Q2 2026",
+    "available": true,
+    "reelUrl": "/media/showreel.mp4",
+    "reelPoster": "/work/rings.webp",
+    "portrait": "/work/sabbir-portrait.webp",
+    "socials": [
+      {
+        "label": "Instagram",
+        "url": "https://instagram.com/",
+        "handle": "@sabbir.motion"
+      },
+      {
+        "label": "Behance",
+        "url": "https://behance.net/",
+        "handle": "/sabbir"
+      },
+      {
+        "label": "Vimeo",
+        "url": "https://vimeo.com/",
+        "handle": "/sabbir"
+      },
+      {
+        "label": "LinkedIn",
+        "url": "https://linkedin.com/",
+        "handle": "/in/sabbir"
+      }
+    ],
+    "stats": [
+      {
+        "label": "Years editing",
+        "value": 2,
+        "suffix": "+"
+      },
+      {
+        "label": "Happy clients",
+        "value": 50,
+        "suffix": "+"
+      },
+      {
+        "label": "Projects delivered",
+        "value": 60,
+        "suffix": "+"
+      },
+      {
+        "label": "Avg. turnaround",
+        "value": 48,
+        "suffix": "h"
+      }
+    ],
+    "seo": {
+      "title": "Sabbir — Video Editor & Motion Designer",
+      "description": "Sabbir is a video editor and motion designer crafting cinematic brand films, title sequences and social content that hold attention.",
+      "keywords": [
+        "video editor",
+        "motion designer",
+        "brand film",
+        "title sequence",
+        "Sabbir",
+        "portfolio",
+        "Dhaka"
+      ]
+    },
+    "footerNote": "Designed & built with intent. Every frame considered.",
+    "accent": "ember",
+    "portraitSquare": "/work/sabbir-square.webp"
+  },
+  "projects": [
+    {
+      "id": "p_aether",
+      "slug": "aether-cinematic-brand-film",
+      "title": "Aether",
+      "subtitle": "Cinematic Brand Film",
+      "category": "Brand Film",
+      "year": "2026",
+      "client": "Aether Studios",
+      "role": "Editor · Colorist · Motion",
+      "tools": [
+        "Premiere Pro",
+        "DaVinci Resolve",
+        "After Effects"
+      ],
+      "summary": "A 90-second manifesto film for a lighting brand — cut to breathe, graded to glow.",
+      "body": [
+        "Aether builds architectural lighting, and their brief was simple: make light feel emotional. We shot for two nights across three locations, then cut a film that treats every fixture as a character rather than a product.",
+        "The edit runs on contrast — long, patient holds against two-frame hits. I graded warm ember into cool shadow so the product never competes with the mood, and layered a restrained optical-grain pass to keep it cinematic without looking vintage.",
+        "The final piece ran as the brand's site hero and their launch keynote opener. Watch-through beat their previous film by 38%.",
+        "Deliverables: 90s hero film, 30s and 15s cutdowns, 9:16 social edits, five silent loop backgrounds for the website."
+      ],
+      "poster": "/work/ember.webp",
+      "videoUrl": "/media/showreel.mp4",
+      "previewUrl": "/media/loop-sweep.mp4",
+      "gallery": [
+        "/work/ember.webp",
+        "/work/rings.webp",
+        "/work/orb.webp"
+      ],
+      "featured": true,
+      "size": "wide",
+      "results": [
+        {
+          "label": "Watch-through",
+          "value": "+38%"
+        },
+        {
+          "label": "Runtime",
+          "value": "90s"
+        },
+        {
+          "label": "Cutdowns",
+          "value": "6"
+        }
+      ],
+      "order": 1
+    },
+    {
+      "id": "p_nova",
+      "slug": "nova-loop-title-sequence",
+      "title": "Nova Loop",
+      "subtitle": "Title Sequence",
+      "category": "Motion Graphics",
+      "year": "2025",
+      "client": "Nova Festival",
+      "role": "Design · Animation · Edit",
+      "tools": [
+        "After Effects",
+        "Cinema 4D",
+        "Illustrator"
+      ],
+      "summary": "An opening title sequence built from concentric sound ripples and one stubborn circle.",
+      "body": [
+        "Nova is a three-day electronic music festival. The identity was already a single ring; the challenge was making one shape feel like a night-long build-up.",
+        "I designed a title system where rings propagate like sound pressure, each beat spawning a new layer. Typography arrives late and leaves early — the sequence is 34 seconds and the logo owns only four of them.",
+        "Everything was built on a 12-frame rhythmic grid, so the whole sequence re-times cleanly to any track the festival uses.",
+        "Delivered as a ProRes 4444 master, an alpha overlay pack for the stage screens, and a set of reusable AE templates for their social team."
+      ],
+      "poster": "/work/rings.webp",
+      "videoUrl": "/media/loop-rings.mp4",
+      "previewUrl": "/media/loop-rings.mp4",
+      "gallery": [
+        "/work/rings.webp",
+        "/work/arc.webp"
+      ],
+      "featured": true,
+      "size": "half",
+      "results": [
+        {
+          "label": "Screens",
+          "value": "3 stages"
+        },
+        {
+          "label": "Runtime",
+          "value": "34s"
+        },
+        {
+          "label": "Templates",
+          "value": "12"
+        }
+      ],
+      "order": 2
+    },
+    {
+      "id": "p_terra",
+      "slug": "terra-product-launch",
+      "title": "Terra",
+      "subtitle": "Product Launch Film",
+      "category": "Commercial",
+      "year": "2025",
+      "client": "Terra Audio",
+      "role": "Editor · 3D · Sound Design",
+      "tools": [
+        "Blender",
+        "Premiere Pro",
+        "Audition"
+      ],
+      "summary": "A launch film where the product is a planet — macro texture, orbital light, no voiceover.",
+      "body": [
+        "Terra's speaker is a sphere, and the team hated every 'product rotating on white' film they'd ever been pitched. So we built a world instead.",
+        "I modelled a simplified hero, lit it with a single orbital key, and matched it to macro plates of fabric and metal shot practically. The edit cross-cuts between scale extremes: a planet-wide horizon, then a two-centimetre stitch.",
+        "No voiceover, no feature list. Just sound design — a low sub that resolves exactly when the sphere turns. The brand's engineers sent me three messages about that pause.",
+        "Ran as the launch-day hero asset and the paid social lead, with nine aspect-ratio variants delivered from one timeline."
+      ],
+      "poster": "/work/orb.webp",
+      "videoUrl": "/media/loop-orb.mp4",
+      "previewUrl": "/media/loop-orb.mp4",
+      "gallery": [
+        "/work/orb.webp",
+        "/work/dust.webp"
+      ],
+      "featured": true,
+      "size": "half",
+      "results": [
+        {
+          "label": "Launch reach",
+          "value": "4.1M"
+        },
+        {
+          "label": "Variants",
+          "value": "9"
+        },
+        {
+          "label": "Runtime",
+          "value": "60s"
+        }
+      ],
+      "order": 3
+    },
+    {
+      "id": "p_pulse",
+      "slug": "pulse-social-campaign",
+      "title": "Pulse",
+      "subtitle": "Social Campaign System",
+      "category": "Social",
+      "year": "2026",
+      "client": "Pulse Fitness",
+      "role": "Edit · Motion System",
+      "tools": [
+        "Premiere Pro",
+        "After Effects",
+        "Figma"
+      ],
+      "summary": "A 40-asset social system powered by one motion language and zero repetitive work.",
+      "body": [
+        "Pulse needed 40 pieces of content a month without the output feeling templated. The answer was a motion language, not 40 animations.",
+        "I defined four moves — punch-in, whip-pan, speed-ramp, and a type wipe — and built them as re-usable AE and Premiere presets. Any editor on their team can now assemble a week of content in an afternoon and it still feels directed.",
+        "The first month outperformed their previous quarter on saves and shares; the system has since been extended to two regional accounts.",
+        "Included a typed asset kit, colour-grade LUT, caption styles and a 14-page usage guide."
+      ],
+      "poster": "/work/streak.webp",
+      "videoUrl": "/media/loop-sweep.mp4",
+      "previewUrl": "/media/loop-sweep.mp4",
+      "gallery": [
+        "/work/streak.webp",
+        "/work/grid.webp"
+      ],
+      "featured": false,
+      "size": "wide",
+      "results": [
+        {
+          "label": "Saves",
+          "value": "+212%"
+        },
+        {
+          "label": "Assets / mo",
+          "value": "40"
+        },
+        {
+          "label": "Regions",
+          "value": "3"
+        }
+      ],
+      "order": 4
+    },
+    {
+      "id": "p_monogram",
+      "slug": "monogram-identity-in-motion",
+      "title": "Monogram",
+      "subtitle": "Identity in Motion",
+      "category": "Branding",
+      "year": "2024",
+      "client": "Mono Atelier",
+      "role": "Creative Direction · Design · Animation",
+      "tools": [
+        "After Effects",
+        "Illustrator"
+      ],
+      "summary": "Turning a static monogram into a 6-second signature that works at any scale.",
+      "body": [
+        "Mono Atelier had a beautiful static mark and no idea how it moved. I built the motion identity around one idea: the letter draws itself the way ink behaves on paper — pressure first, then release.",
+        "The system includes a 6-second signature, a 1.5-second stinger, a loading loop and a set of transition wipes that all share the same easing curve.",
+        "Every asset was stress-tested from 120px favicons up to a 6-metre trade-show wall.",
+        "The brand book gained a 12-page motion appendix; the studio now uses the stinger in every client presentation."
+      ],
+      "poster": "/work/monogram.webp",
+      "videoUrl": "/media/showreel.mp4",
+      "previewUrl": "",
+      "gallery": [
+        "/work/monogram.webp",
+        "/work/rings.webp"
+      ],
+      "featured": false,
+      "size": "wide",
+      "results": [
+        {
+          "label": "Assets",
+          "value": "18"
+        },
+        {
+          "label": "Layers",
+          "value": "1 curve"
+        },
+        {
+          "label": "Scales",
+          "value": "120px→6m"
+        }
+      ],
+      "order": 5
+    },
+    {
+      "id": "p_horizon",
+      "slug": "horizon-documentary-open",
+      "title": "Horizon",
+      "subtitle": "Documentary Open",
+      "category": "Documentary",
+      "year": "2024",
+      "client": "Field Notes Film",
+      "role": "Editor · Title Design",
+      "tools": [
+        "Premiere Pro",
+        "DaVinci Resolve"
+      ],
+      "summary": "A 2-minute doc opener cut to silence, texture and a single moving horizon line.",
+      "body": [
+        "Field Notes shot forty hours of coastal footage for a film about shifting shorelines. The opener had to establish scale without a narrator.",
+        "I cut against the sound of water rather than music — letting the ambience set the rhythm — and built a horizon line in motion that travels across every shot, tying the sequence together.",
+        "The title is set in a single weight and lands on a hard cut to black. Nothing else moves for two seconds. It's the moment people remember.",
+        "Delivered the full 74-minute documentary edit, the 2-minute opener, and a trailer for festival submissions."
+      ],
+      "poster": "/work/grid.webp",
+      "videoUrl": "/media/showreel.mp4",
+      "previewUrl": "",
+      "gallery": [
+        "/work/grid.webp",
+        "/work/dust.webp"
+      ],
+      "featured": false,
+      "size": "half",
+      "results": [
+        {
+          "label": "Festivals",
+          "value": "4 selections"
+        },
+        {
+          "label": "Footage",
+          "value": "40 hrs"
+        },
+        {
+          "label": "Runtime",
+          "value": "74 min"
+        }
+      ],
+      "order": 6
+    },
+    {
+      "id": "p_bloom",
+      "slug": "bloom-music-visualiser",
+      "title": "Bloom",
+      "subtitle": "Music Visualiser",
+      "category": "3D & VFX",
+      "year": "2025",
+      "client": "Kaia (Artist)",
+      "role": "3D · Animation · Edit",
+      "tools": [
+        "Blender",
+        "After Effects",
+        "Premiere Pro"
+      ],
+      "summary": "A generative visualiser driven by the stems of a single track — no two loops identical.",
+      "body": [
+        "Kaia wanted a visual for a track that builds for three minutes. Static loops wouldn't work, so I drove displacement directly from the song's stems.",
+        "Kick drives the scale pulse, hats drive grain, and the vocal stem controls a slow bloom. Because the input is audio, every render — and every live set — comes out slightly different.",
+        "Rendered at 4K in Cycles with a 3-hour budget, then composited and graded in After Effects for consistency across the section changes.",
+        "Now used as the official visualiser plus a live VJ pack with 24 clip variations."
+      ],
+      "poster": "/work/arc.webp",
+      "videoUrl": "/media/showreel.mp4",
+      "previewUrl": "",
+      "gallery": [
+        "/work/arc.webp",
+        "/work/orb.webp"
+      ],
+      "featured": false,
+      "size": "half",
+      "results": [
+        {
+          "label": "Clip variations",
+          "value": "24"
+        },
+        {
+          "label": "Render",
+          "value": "4K · 3h"
+        },
+        {
+          "label": "Stems driven",
+          "value": "4"
+        }
+      ],
+      "order": 7
+    },
+    {
+      "id": "p_dust",
+      "slug": "dust-fashion-film",
+      "title": "Dust",
+      "subtitle": "Fashion Film",
+      "category": "Fashion",
+      "year": "2026",
+      "client": "Ochre Atelier",
+      "role": "Editor · Colorist",
+      "tools": [
+        "DaVinci Resolve",
+        "Premiere Pro"
+      ],
+      "summary": "A 45-second fashion film about garments in motion — cut on fabric, not on beats.",
+      "body": [
+        "Ochre's collection was about weight and drape, so the film had to be edited on movement instead of music. Every cut lands when the fabric changes direction.",
+        "I spent a day in the grade building a warm, dusty palette with almost no blue — skin tones kept alive, shadows lifted just enough to keep the texture of the cloth.",
+        "The finished film runs in their showroom on loop and opened their Paris presentation.",
+        "Delivered 45s hero, three 10s product loops, and a print-safe stills pass pulled from the timeline."
+      ],
+      "poster": "/work/dust.webp",
+      "videoUrl": "/media/showreel.mp4",
+      "previewUrl": "",
+      "gallery": [
+        "/work/dust.webp",
+        "/work/ember.webp"
+      ],
+      "featured": false,
+      "size": "wide",
+      "results": [
+        {
+          "label": "Shoot days",
+          "value": "2"
+        },
+        {
+          "label": "Runtime",
+          "value": "45s"
+        },
+        {
+          "label": "Stills",
+          "value": "26"
+        }
+      ],
+      "order": 8
+    }
+  ],
+  "services": [
+    {
+      "id": "s_edit",
+      "title": "Editing & Post",
+      "description": "Story-first editing, colour and sound for brand films, documentaries and commercials. From rushes to delivery-ready master.",
+      "deliverables": [
+        "Offline & online edit",
+        "Colour grade",
+        "Sound design & mix",
+        "Cutdowns & aspect ratios"
+      ],
+      "order": 1,
+      "image": "/work/ember.webp"
+    },
+    {
+      "id": "s_motion",
+      "title": "Motion & Titles",
+      "description": "Title sequences, kinetic typography and motion systems that make a brand recognisable in half a second.",
+      "deliverables": [
+        "Title sequences",
+        "Logo animation",
+        "Kinetic type systems",
+        "Broadcast packages"
+      ],
+      "order": 2,
+      "image": "/work/rings.webp"
+    },
+    {
+      "id": "s_3d",
+      "title": "3D & VFX",
+      "description": "Product visualisation, compositing and generative motion. Built in Blender and finished in After Effects.",
+      "deliverables": [
+        "Product & environment 3D",
+        "Compositing",
+        "Clean-up & tracking",
+        "Simulation & generative"
+      ],
+      "order": 3,
+      "image": "/work/orb.webp"
+    },
+    {
+      "id": "s_direction",
+      "title": "Creative Direction",
+      "description": "The thinking before the timeline opens — concept, story structure, boards and a visual language the whole team can follow.",
+      "deliverables": [
+        "Concept & treatment",
+        "Storyboards",
+        "Style frames",
+        "Motion style guides"
+      ],
+      "order": 4,
+      "image": "/work/monogram.webp"
+    }
+  ],
+  "process": [
+    {
+      "id": "pr_1",
+      "title": "Brief & Discovery",
+      "description": "A call, your references, and the uncomfortable questions. We agree on the feeling before we agree on the frames.",
+      "order": 1
+    },
+    {
+      "id": "pr_2",
+      "title": "Concept & Boards",
+      "description": "A treatment, a story structure and style frames. You see the film's skeleton before a single clip is cut.",
+      "order": 2
+    },
+    {
+      "id": "pr_3",
+      "title": "Edit & Design",
+      "description": "Two rounds of offline edit, motion built to the final timing, then a colour and sound pass.",
+      "order": 3
+    },
+    {
+      "id": "pr_4",
+      "title": "Deliver & Systemise",
+      "description": "Masters, cutdowns, captions and templates — delivered in an organised handover your team can actually use.",
+      "order": 4
+    }
+  ],
+  "testimonials": [
+    {
+      "id": "t_1",
+      "quote": "Sabbir doesn't just cut a film, he finds the version of it we couldn't articulate. The Aether launch film is still the best asset we've ever commissioned.",
+      "name": "Nadia Rahman",
+      "title": "Brand Director",
+      "company": "Aether Studios",
+      "order": 1
+    },
+    {
+      "id": "t_2",
+      "quote": "He delivered a motion system our in-house team could run with immediately. Six months later it's still on-brand, still on time, still working.",
+      "name": "Marcus Reed",
+      "title": "Head of Content",
+      "company": "Pulse Fitness",
+      "order": 2
+    },
+    {
+      "id": "t_3",
+      "quote": "The pacing is the thing. Every cut in that film lands exactly where it should. That's not software, that's taste.",
+      "name": "Aiko Tanaka",
+      "title": "Festival Director",
+      "company": "Nova Festival",
+      "order": 3
+    }
+  ],
+  "messages": [
+    {
+      "id": "m_seed1",
+      "name": "Lena Fischer",
+      "email": "lena@northlight.co",
+      "projectType": "Brand Film",
+      "message": "Hi Sabbir — we're launching a lighting range in March and loved the Aether film. Do you have space for a 60-second hero plus cutdowns? Budget is healthy and we shoot mid-February.",
+      "createdAt": "2026-02-18T10:24:00.000Z",
+      "read": true
+    },
+    {
+      "id": "m_seed2",
+      "name": "Daniel Oyelaran",
+      "email": "daniel@studioform.tv",
+      "projectType": "Motion System",
+      "message": "We need a title package for a new podcast series — 12 episodes, consistent system. Would love to see your process doc.",
+      "createdAt": "2026-02-11T15:02:00.000Z",
+      "read": true
+    }
+  ]
+}
