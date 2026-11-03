@@ -105,6 +105,16 @@ Change these five and the whole site follows. Accent presets live just below.
 Fonts are self-hosted in `public/fonts/` (`Inter Tight` + `Instrument Serif`).
 Swap the `@font-face` files and update `--font-sans` / `--font-serif` in the `@theme` block.
 
+### Deploy (Vercel)
+
+- **Repo** — [github.com/sabbirexist/personal-web](https://github.com/sabbirexist/personal-web)
+- **Live** — [visualsbysabbir.vercel.app](https://visualsbysabbir.vercel.app)
+- **Analytics** — Vercel Web Analytics via `@vercel/analytics` (`<Analytics />` in the root layout).
+- **Env vars** — `ADMIN_PASSWORD`, `AUTH_SECRET`, `NEXT_PUBLIC_SITE_URL` (see `.env.example`).
+- **Read-only note** — Vercel's filesystem is not writable, so the admin panel and contact inbox cannot
+  persist edits there. The contact form falls back to a pre-filled `mailto:` link when the API can't
+  save. For a fully editable deployment, put `data/content.json` behind Vercel Blob/KV (or a small DB).
+
 ### 3. Logo
 `components/logo.tsx` — one signature-serif SVG path (`LogoMark`) drives the nav mark, footer mark,
 preloader, favicon source and OG image. Edit the path once. `public/favicon.svg` is the
