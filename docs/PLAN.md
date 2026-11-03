@@ -161,3 +161,13 @@ Two crops are produced (4:5 hero, square about). `scripts/cutout_portrait.py` is
 - **Contact** rebuilt as a split panel: message + direct line + studio facts on the left, a brief
   form with project-type chips on the right, submit row anchored to the bottom.
 - Availability dots now use the ember accent instead of green.
+
+## Revision 4 — production-grade admin
+
+- **Vercel Blob** backs `data/content.json` and uploads when running on Vercel, so the admin panel,
+  message read/unread/delete and media upload/delete all work on the live site instead of failing on
+  a read-only filesystem. Local development keeps using the JSON file for speed.
+- **Adaptive admin** — two-up stats on phones, min-width guards so cards never widen their grid track,
+  clamped enquiry rows, responsive project rows, compact `btn-xs` media buttons.
+- **Header mark** — the S is now an editing-scissors monoline; admin header uses the same inline
+  `STUDIO ADMIN` lockup as the site's `— PORTFOLIO`.

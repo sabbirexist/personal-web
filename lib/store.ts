@@ -1,21 +1,63 @@
 import { promises as fs } from "fs";
 import path from "path";
+import { get, put } from "@vercel/blob";
+import seed from "@/data/content.json";
 import type { Content, Project, Service, Testimonial, ProcessStep } from "./types";
 
 const DATA_DIR = path.join(process.cwd(), "data");
 const DATA_FILE = path.join(DATA_DIR, "content.json");
+const BLOB_PATH = "data/content.json";
 
-export async function readContent(): Promise<Content> {
+/** On Vercel the filesystem is read-only, so content lives in a Blob store. */
+export const blobEnabled = () => Boolean(process.env.VERCEL && process.env.BLOB_READ_WRITE_TOKEN);
+export const isReadOnlyDeployment = () => Boolean(process.env.VERCEL) && !blobEnabled();
+
+async function readBundled(): Promise<Content> {
+  if (process.env.VERCEL) return seed as Content;
   const raw = await fs.readFile(DATA_FILE, "utf8");
   return JSON.parse(raw) as Content;
 }
 
-export const isReadOnlyDeployment = () => Boolean(process.env.VERCEL);
+async function readBlob(): Promise<Content | null> {
+  try {
+    const result = await get(BLOB_PATH, { access: "public", useCache: false });
+    if (!result || result.statusCode !== 200) return null;
+    const text = await new Response(result.stream).text();
+    return JSON.parse(text) as Content;
+  } catch {
+    return null;
+  }
+}
+
+async function putBlob(content: Content): Promise<void> {
+  await put(BLOB_PATH, JSON.stringify(content, null, 2), {
+    access: "public",
+    addRandomSuffix: false,
+    allowOverwrite: true,
+    contentType: "application/json",
+    cacheControlMaxAge: 0,
+  });
+}
+
+export async function readContent(): Promise<Content> {
+  if (blobEnabled()) {
+    const stored = await readBlob();
+    if (stored) return stored;
+    const initial = await readBundled();
+    await putBlob(initial);
+    return initial;
+  }
+  return readBundled();
+}
 
 export async function writeContent(content: Content): Promise<void> {
+  if (blobEnabled()) {
+    await putBlob(content);
+    return;
+  }
   if (isReadOnlyDeployment()) {
     throw new Error(
-      "This deployment is read-only. Editing needs a database or blob store — run the site locally to change content."
+      "This deployment is read-only. Connect a Blob store to enable editing on the live site."
     );
   }
   await fs.mkdir(DATA_DIR, { recursive: true });

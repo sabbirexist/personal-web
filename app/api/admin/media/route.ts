@@ -1,7 +1,9 @@
 import { NextResponse } from "next/server";
 import { promises as fs } from "fs";
 import path from "path";
+import { del, list } from "@vercel/blob";
 import { guard } from "@/lib/api";
+import { blobEnabled } from "@/lib/store";
 
 const IMAGE_EXT = /\.(jpe?g|png|webp|avif|gif|svg)$/i;
 const VIDEO_EXT = /\.(mp4|webm|mov)$/i;
@@ -56,7 +58,21 @@ export async function GET() {
     listFolder("media"),
   ]);
 
-  return NextResponse.json({ files: [...media, ...uploads, ...work] });
+  let blobUploads: MediaFile[] = [];
+  if (blobEnabled()) {
+    try {
+      const { blobs } = await list({ prefix: "uploads/" });
+      blobUploads = blobs.map((blob) => {
+        const name = blob.pathname.split("/").pop() || blob.pathname;
+        const kind = IMAGE_EXT.test(name) ? "image" : "video";
+        return { url: blob.url, name, size: blob.size, kind, folder: "uploads" } satisfies MediaFile;
+      });
+    } catch {
+      blobUploads = [];
+    }
+  }
+
+  return NextResponse.json({ files: [...media, ...blobUploads, ...uploads, ...work] });
 }
 
 export async function DELETE(request: Request) {
@@ -65,6 +81,16 @@ export async function DELETE(request: Request) {
 
   const url = new URL(request.url);
   const target = url.searchParams.get("path") ?? "";
+
+  if (blobEnabled() && /^https?:\/\//.test(target)) {
+    try {
+      await del(target);
+      return NextResponse.json({ ok: true });
+    } catch {
+      return NextResponse.json({ error: "File not found." }, { status: 404 });
+    }
+  }
+
   if (!target.startsWith("/uploads/")) {
     return NextResponse.json({ error: "Only uploaded files can be deleted." }, { status: 400 });
   }

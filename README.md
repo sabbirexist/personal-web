@@ -111,9 +111,9 @@ Swap the `@font-face` files and update `--font-sans` / `--font-serif` in the `@t
 - **Live** — [visualsbysabbir.vercel.app](https://visualsbysabbir.vercel.app)
 - **Analytics** — Vercel Web Analytics via `@vercel/analytics` (`<Analytics />` in the root layout).
 - **Env vars** — `ADMIN_PASSWORD`, `AUTH_SECRET`, `NEXT_PUBLIC_SITE_URL` (see `.env.example`).
-- **Read-only note** — Vercel's filesystem is not writable, so the admin panel and contact inbox cannot
-  persist edits there. The contact form falls back to a pre-filled `mailto:` link when the API can't
-  save. For a fully editable deployment, put `data/content.json` behind Vercel Blob/KV (or a small DB).
+- **Storage** — on Vercel the admin panel writes to **Vercel Blob** (`data/content.json` and uploaded
+  files), so messages, edits and uploads persist on the live site. Locally it still uses the JSON file.
+  `BLOB_READ_WRITE_TOKEN` is injected by the Blob store connection (`sabbir-content`).
 
 ### 3. Logo
 `components/logo.tsx` — one signature-serif SVG path (`LogoMark`) drives the nav mark, footer mark,
