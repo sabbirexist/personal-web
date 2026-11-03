@@ -174,6 +174,14 @@ export function ListEditor({
                   };
                   return (
                     <div key={field.key} className={field.full ? "sm:col-span-2" : undefined}>
+                      {field.type === "media" ? (
+                        <MediaField
+                          label={field.label}
+                          value={String(value ?? "")}
+                          onChange={(next) => update(index, field.key, next)}
+                          hint={field.hint}
+                        />
+                      ) : (
                       <Field label={field.label} htmlFor={common.id} hint={field.hint}>
                         {field.type === "textarea" || field.type === "lines" ? (
                           <textarea
@@ -196,13 +204,6 @@ export function ListEditor({
                               )
                             }
                           />
-                        ) : field.type === "media" ? (
-                          <MediaField
-                            label={field.label}
-                            value={String(value ?? "")}
-                            onChange={(next) => update(index, field.key, next)}
-                            hint={field.hint}
-                          />
                         ) : field.type === "number" ? (
                           <input
                             {...common}
@@ -220,6 +221,7 @@ export function ListEditor({
                           />
                         )}
                       </Field>
+                      )}
                     </div>
                   );
                 })}
