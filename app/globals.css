@@ -369,6 +369,12 @@ html[data-theme="light"][data-accent="coral"] {
     padding-inline: 1.15rem;
     font-size: 0.85rem;
   }
+  .btn-xs {
+    height: 34px;
+    padding-inline: 0.8rem;
+    font-size: 0.76rem;
+    gap: 0.4rem;
+  }
   .btn-primary {
     background: var(--accent);
     color: var(--accent-ink);
@@ -1042,7 +1048,8 @@ html[data-intro="1"] .intro-curtain .intro-bar {
   .h1 {
     font-size: clamp(2.5rem, 12vw, 4rem);
   }
-  .btn {
+  /* only the default-size buttons grow on phones; small and xs keep their size */
+  .btn:not(.btn-sm):not(.btn-xs) {
     height: 48px;
   }
 }

@@ -78,7 +78,7 @@ export function MediaField({
               type="button"
               onClick={() => inputRef.current?.click()}
               disabled={uploading}
-              className="btn btn-ghost btn-sm h-8 px-2.5 text-[0.76rem]"
+              className="btn btn-ghost btn-xs"
             >
               <Icon name="upload" size={12} />
               {uploading ? "Uploading…" : "Upload"}

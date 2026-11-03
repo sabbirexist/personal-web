@@ -81,47 +81,27 @@ export function ProjectsTable({ projects }: { projects: Project[] }) {
       <ul className="divide-y divide-line">
         {projects.map((project, index) => (
           <li key={project.id} className="group">
-            <div className="flex flex-wrap items-center gap-3 px-4 py-3 transition-colors hover:bg-[color-mix(in_oklab,var(--ink)_3%,transparent)]">
-              <div className="flex w-[74px] shrink-0 items-center gap-1">
-                <span className="mono mr-1 text-[9px] text-faint">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
-                <button
-                  type="button"
-                  onClick={() => move(index, -1)}
-                  disabled={index === 0 || busy}
-                  className="grid size-6 place-items-center rounded border border-line text-faint transition-colors hover:text-ink disabled:opacity-25"
-                  aria-label={`Move ${project.title} up`}
-                >
-                  <Icon name="arrowUp" size={11} />
-                </button>
-                <button
-                  type="button"
-                  onClick={() => move(index, 1)}
-                  disabled={index === projects.length - 1 || busy}
-                  className="grid size-6 place-items-center rounded border border-line text-faint transition-colors hover:text-ink disabled:opacity-25"
-                  aria-label={`Move ${project.title} down`}
-                >
-                  <Icon name="arrowDown" size={11} />
-                </button>
-              </div>
-
+            <div className="flex flex-wrap items-center gap-x-3 gap-y-2.5 px-3 py-3 transition-colors hover:bg-[color-mix(in_oklab,var(--ink)_3%,transparent)] sm:gap-x-4 sm:px-4">
               <Link
                 href={`/admin/projects/${project.id}`}
-                className="flex min-w-0 flex-1 items-center gap-3"
+                className="order-1 flex min-w-0 flex-1 items-center gap-2.5 sm:order-2 sm:gap-3"
               >
                 {/* eslint-disable-next-line @next/next/no-img-element */}
                 <img
                   src={project.poster}
                   alt=""
-                  className="h-11 w-[70px] shrink-0 rounded-md border border-line object-cover"
+                  className="h-10 w-14 shrink-0 rounded-md border border-line object-cover sm:h-11 sm:w-[70px]"
                 />
-                <span className="min-w-0">
-                  <span className="flex items-center gap-2">
-                    <span className="truncate text-[0.87rem] font-medium text-ink">
+                <span className="min-w-0 flex-1">
+                  <span className="flex min-w-0 items-center gap-2">
+                    <span className="truncate text-[0.85rem] font-medium text-ink sm:text-[0.87rem]">
                       {project.title}
                     </span>
-                    {project.featured && <span className="badge badge-accent">Featured</span>}
+                    {project.featured && (
+                      <span className="badge badge-accent hidden shrink-0 sm:inline-flex">
+                        Featured
+                      </span>
+                    )}
                   </span>
                   <span className="mono mt-0.5 block truncate text-[8px] text-faint">
                     /work/{project.slug}
@@ -129,12 +109,7 @@ export function ProjectsTable({ projects }: { projects: Project[] }) {
                 </span>
               </Link>
 
-              <span className="hidden w-24 truncate text-[0.78rem] text-muted md:block">
-                {project.category}
-              </span>
-              <span className="mono hidden w-12 text-[9px] text-faint md:block">{project.year}</span>
-
-              <div className="flex w-[112px] shrink-0 items-center justify-end gap-1">
+              <div className="order-2 flex shrink-0 items-center justify-end gap-0.5 sm:order-5 sm:w-[112px] sm:gap-1">
                 <Link
                   href={`/work/${project.slug}`}
                   target="_blank"
@@ -181,6 +156,38 @@ export function ProjectsTable({ projects }: { projects: Project[] }) {
                   </button>
                 )}
               </div>
+
+              <div className="order-3 flex w-full items-center gap-1 border-t border-line/60 pt-2 sm:order-1 sm:w-[74px] sm:shrink-0 sm:border-0 sm:pt-0">
+                <span className="mono mr-1 text-[9px] text-faint">
+                  {String(index + 1).padStart(2, "0")}
+                </span>
+                <button
+                  type="button"
+                  onClick={() => move(index, -1)}
+                  disabled={index === 0 || busy}
+                  className="grid size-6 place-items-center rounded border border-line text-faint transition-colors hover:text-ink disabled:opacity-25"
+                  aria-label={`Move ${project.title} up`}
+                >
+                  <Icon name="arrowUp" size={11} />
+                </button>
+                <button
+                  type="button"
+                  onClick={() => move(index, 1)}
+                  disabled={index === projects.length - 1 || busy}
+                  className="grid size-6 place-items-center rounded border border-line text-faint transition-colors hover:text-ink disabled:opacity-25"
+                  aria-label={`Move ${project.title} down`}
+                >
+                  <Icon name="arrowDown" size={11} />
+                </button>
+                <span className="mono ml-auto text-[8px] text-faint sm:hidden">
+                  {project.category} · {project.year}
+                </span>
+              </div>
+
+              <span className="hidden w-24 truncate text-[0.78rem] text-muted sm:order-3 md:block">
+                {project.category}
+              </span>
+              <span className="mono hidden w-12 text-[9px] text-faint sm:order-4 md:block">{project.year}</span>
             </div>
           </li>
         ))}

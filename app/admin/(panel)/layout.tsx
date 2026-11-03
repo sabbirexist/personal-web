@@ -15,7 +15,7 @@ export default async function PanelLayout({ children }: { children: React.ReactN
   const unread = messages.filter((m) => !m.read).length;
 
   return (
-    <div className="min-h-[100svh] bg-bg">
+    <div className="min-h-[100svh] overflow-x-clip bg-bg">
       <AdminSidebar unread={unread} />
       <Toaster />
       <div className="lg:pl-[250px]">
