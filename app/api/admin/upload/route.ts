@@ -4,7 +4,7 @@ import path from "path";
 import { guard } from "@/lib/api";
 import { slugify } from "@/lib/utils";
 import { put } from "@vercel/blob";
-import { blobEnabled } from "@/lib/store";
+import { uploadsEnabled } from "@/lib/store";
 
 const MAX_BYTES = 30 * 1024 * 1024;
 const ALLOWED = new Set([".jpg", ".jpeg", ".png", ".webp", ".avif", ".gif", ".svg", ".mp4", ".webm"]);
@@ -39,7 +39,7 @@ export async function POST(request: Request) {
   const base = slugify(path.basename(file.name, ext)) || "asset";
   const filename = `${base}-${Date.now().toString(36)}${ext}`;
 
-  if (blobEnabled()) {
+  if (uploadsEnabled()) {
     const blob = await put(`uploads/${filename}`, file, {
       access: "public",
       addRandomSuffix: false,

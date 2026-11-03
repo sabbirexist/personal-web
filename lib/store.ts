@@ -1,6 +1,6 @@
 import { promises as fs } from "fs";
 import path from "path";
-import { head, put } from "@vercel/blob";
+import { get, put } from "@vercel/blob";
 import seed from "@/data/content.json";
 import type { Content, Project, Service, Testimonial, ProcessStep } from "./types";
 
@@ -8,9 +8,11 @@ const DATA_DIR = path.join(process.cwd(), "data");
 const DATA_FILE = path.join(DATA_DIR, "content.json");
 const BLOB_PATH = "data/content.json";
 
-/** On Vercel the filesystem is read-only, so content lives in a Blob store. */
-export const blobEnabled = () => Boolean(process.env.VERCEL && process.env.BLOB_READ_WRITE_TOKEN);
+/** On Vercel the filesystem is read-only, so content lives in a private Blob store. */
+export const blobEnabled = () => Boolean(process.env.VERCEL && process.env.CONTENT_READ_WRITE_TOKEN);
 export const isReadOnlyDeployment = () => Boolean(process.env.VERCEL) && !blobEnabled();
+/** Uploaded media lives in the public Blob store. */
+export const uploadsEnabled = () => Boolean(process.env.BLOB_READ_WRITE_TOKEN);
 
 async function readBundled(): Promise<Content> {
   if (process.env.VERCEL) return seed as Content;
@@ -20,13 +22,16 @@ async function readBundled(): Promise<Content> {
 
 async function readBlob(): Promise<Content | null> {
   try {
-    // Public blobs are CDN-cached for up to 60s; head() gives the canonical URL and
-    // a per-read query string forces a MISS so the admin always sees its own writes.
-    const meta = await head(BLOB_PATH);
-    if (!meta?.url) return null;
-    const res = await fetch(`${meta.url}?v=${Date.now()}`, { cache: "no-store" });
-    if (!res.ok) return null;
-    return (await res.json()) as Content;
+    // Private blobs are read through the API (no CDN), so admin writes are visible immediately.
+    const result = await get(BLOB_PATH, {
+      access: "private",
+      token: process.env.CONTENT_READ_WRITE_TOKEN,
+      useCache: false,
+    });
+    if (!result || result.statusCode !== 200) return null;
+    const text = await new Response(result.stream).text();
+    if (!text) return null;
+    return JSON.parse(text) as Content;
   } catch {
     return null;
   }
@@ -34,11 +39,11 @@ async function readBlob(): Promise<Content | null> {
 
 async function putBlob(content: Content): Promise<void> {
   await put(BLOB_PATH, JSON.stringify(content, null, 2), {
-    access: "public",
+    access: "private",
+    token: process.env.CONTENT_READ_WRITE_TOKEN,
     addRandomSuffix: false,
     allowOverwrite: true,
     contentType: "application/json",
-    cacheControlMaxAge: 0,
   });
 }
 

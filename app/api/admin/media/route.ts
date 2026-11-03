@@ -3,7 +3,7 @@ import { promises as fs } from "fs";
 import path from "path";
 import { del, list } from "@vercel/blob";
 import { guard } from "@/lib/api";
-import { blobEnabled } from "@/lib/store";
+import { uploadsEnabled } from "@/lib/store";
 
 const IMAGE_EXT = /\.(jpe?g|png|webp|avif|gif|svg)$/i;
 const VIDEO_EXT = /\.(mp4|webm|mov)$/i;
@@ -59,7 +59,7 @@ export async function GET() {
   ]);
 
   let blobUploads: MediaFile[] = [];
-  if (blobEnabled()) {
+  if (uploadsEnabled()) {
     try {
       const { blobs } = await list({ prefix: "uploads/" });
       blobUploads = blobs.map((blob) => {
@@ -82,7 +82,7 @@ export async function DELETE(request: Request) {
   const url = new URL(request.url);
   const target = url.searchParams.get("path") ?? "";
 
-  if (blobEnabled() && /^https?:\/\//.test(target)) {
+  if (uploadsEnabled() && /^https?:\/\//.test(target)) {
     try {
       await del(target);
       return NextResponse.json({ ok: true });
